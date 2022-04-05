@@ -4,6 +4,7 @@ class RoomsController < ApplicationController
     redirect_to '/signin' unless @current_user
     @rooms = Room.public_rooms
     @users = User.all_except(@current_user)
+    @user = current_user
 
     @room = Room.new
   end
