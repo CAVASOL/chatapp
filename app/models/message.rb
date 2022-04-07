@@ -7,9 +7,10 @@ class Message < ApplicationRecord
   after_create_commit { broadcast_append_to self.room }
 
   def confirm_participant
-    if confirm_participant.room.is_private
-      is_participant = Participant.where(user_id: confirm_participant.user.id, room_id: confirm_participant.room.id).first
-      throw :abort unless is_participant
-    end
+    return unless confirm_participant.room.is_private
+
+      is_participant = Participant.where(user_id: confirm_participant.user.id,
+                                         room_id: confirm_participant.room.id).first
+    throw :abort unless is_participant
   end
 end
