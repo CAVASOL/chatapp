@@ -8,8 +8,8 @@
         <%= render @users %>
       </div>
     </div>
-    <h4> Rooms </h4>
-    <%# <h4 class="text-center"> <%= @user.username || @single_room.name </h4>  %>
+    <%# <h4> Rooms </h4> %>
+    <h4 class="text-center"> <%= @current_user.username || @single_room.name %> </h4>
     <%= render partial: "layouts/new_room_form" %>
     <div>
       <%= turbo_stream_from "rooms" %>
